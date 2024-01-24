@@ -18,9 +18,7 @@ import (
 var data string
 
 // bloom filter (https://en.wikipedia.org/wiki/Bloom_filter)
-// construct a filter with 5 hashing functions on 2^30 bits
-// which has a fprate of ~0.001
-var filter = bloom.New(1, 1)
+var filter = bloom.New(2<<25, 3)
 
 type fn func(string) uint32
 

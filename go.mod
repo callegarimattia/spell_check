@@ -1,4 +1,4 @@
-module callegarimattia.com/spell_checker
+module callegarimattia.com/spell_check
 
 go 1.21.6
 

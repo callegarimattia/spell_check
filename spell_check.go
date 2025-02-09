@@ -20,15 +20,12 @@ var data string
 // bloom filter (https://en.wikipedia.org/wiki/Bloom_filter)
 var filter = bloom.New(2<<25, 3)
 
-type fn func(string) uint32
+type fn = func(string) uint32
 
 func main() {
 	time, num := benchmark(load_dict1)
 	fmt.Printf("#1: Loaded %v words in %v\n", num, time)
 	filter.BitSet().ClearAll()
-
-	time, num = benchmark(load_dict2)
-	fmt.Printf("#2: Loaded %v words in %v\n", num, time)
 
 	cli()
 }
@@ -50,10 +47,6 @@ func load_dict1(data string) (n uint32) {
 			n += 1
 		}
 	}
-	return
-}
-
-func load_dict2(data string) (n uint32) {
 	return
 }
 
@@ -84,5 +77,5 @@ func check_word(word string) {
 func clear() {
 	cmd := exec.Command("clear")
 	cmd.Stdout = os.Stdout
-	cmd.Run()
+	panic(cmd.Run())
 }
